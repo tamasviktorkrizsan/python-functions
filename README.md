@@ -25,7 +25,7 @@ After that, you can call these functions/classes/methods...
 
 ### design patterns module
 
-#### Singleton meta
+#### Singleton meta (class)
 
 Limit the number of created objects to 1.
 The client class has to inherit it as a metaclass.
@@ -34,24 +34,25 @@ The client class has to inherit it as a metaclass.
 
 `class ClientClass(metaclass=design_patterns.SingletonMeta):`
 
+***
 
 ### file module
 
-#### convert_raw_string
+#### convert_raw_string (function)
 
 Convert a normal string to a raw string.
             
-Arguments: 
+**Arguments:** 
 
 input_string(str): A normal string.
 
-
-Returns:
+**Returns:**
 
 A raw string.
 
+***
 
-#### search_list
+#### search_list (function)
 
 Search in a list for pattern.
 
@@ -67,8 +68,9 @@ Find out if a given pattern has 1 match in one of the input list's items.
 
 Boolean (True/False)
 
+***
 
-#### filter_filename
+#### filter_filename (function)
 
 Filter file or folder names with filesystem problematic characters.
 
@@ -81,7 +83,6 @@ The following characters will be replaced:
 
 Whitespace(" ") -> Underscore("_")
 
-
 **Arguments:**
 
 **input_filename(str):** filename string.
@@ -90,23 +91,26 @@ Whitespace(" ") -> Underscore("_")
 
 Corrected or untouched filename string.
                 
+***
 
-#### make_folder
+#### make_folder (function)
 
 Recursively create multiple folders.
 
 **Arguments:**
 
-folder_list(list[str]): a list consist of folder name strings.
+**folder_list(list[str]):** a list consist of folder name strings.
 
 **Raises:**
 
 FileExistsError: An error occurred when the given folder is already exists.
 
+***
 
-#### make_folder_name
+#### make_folder_name (function)
 
 Create an output folder name with path for output shell commands.
+
 
 **Arguments:**
 
@@ -117,8 +121,9 @@ Create an output folder name with path for output shell commands.
 
 folder path in a raw string (for dos style paths).
     
+***
 
-#### make_filename
+#### make_filename (function)
 
 Create an output filename for output shell commands.
 
@@ -134,8 +139,9 @@ Create an output filename for output shell commands.
 
 filename or full path in a raw string (for windows style paths).
 
+***
 
-#### scan_extension
+#### scan_extension (function)
 
 Get the input file name's extension.
 
@@ -143,16 +149,17 @@ Extract the input file's extension.
 
 **Arguments:**
 
-input_filename(str): string.
+**input_filename(str):** string.
 
 **Returns:**
 
 file extension in the following format: ".extension"
 
+***
 
 ### object module
 
-#### make_object_list
+#### make_object_list (function)
 
 Generate a list of objects based on the value of the object.input_file attribute.
 
@@ -173,10 +180,11 @@ this possible values of the input_file attribute are:
 
 A list of objects with exact filenames in each object.input_file attribute.
 
+***
 
 ### process
 
-#### start
+#### start (function)
 
 Execute a shell command.
 
@@ -184,13 +192,11 @@ Loop through a list of dictionaries and execute the 'command' key in each dict, 
 create output folders, and record the contents of the shell into a logfile if the necessary values for the
 'output_folder_list' and/or 'logfile' keys are present.
 
-
 **Arguments:**
 
 **command_object_list(list[dict]):** 
 
 a list of dictionaries. The dictionaries must contain the following keys...
-
 
 **command(list[str]):**
 
@@ -209,9 +215,9 @@ Optional key. An output logfile name, all contents of the console goes here.
 
 Only returns the command, when the 'unittest' module is among the loaded modules.
         
+***
 
-
-#### return value
+#### return value (function)
 
 Execute a shell command and return its output.
 
