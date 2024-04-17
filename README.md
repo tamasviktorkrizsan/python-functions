@@ -1,4 +1,7 @@
 # python-functions
+
+![version 3.10](https://img.shields.io/badge/Python-3.10-blue) ![96% coverage](https://img.shields.io/badge/coverage-96%25-green) ![codes tyle](https://img.shields.io/badge/code%C2%A0style-Google-blue)
+
 Basic library tools/dependency for other python based projects.
 
 
