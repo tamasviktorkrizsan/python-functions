@@ -17,7 +17,7 @@ import re
 import _python_functions
 
 
-def pattern_list_2_object_list(input_object: object) -> list[object]:
+def _pattern_list_2_object_list(input_object: object) -> list[object]:
     """generate an object list from a pattern list.
 
         this function will break down the parameter object's 'input_file' attribute, into several objects, depending
@@ -31,30 +31,30 @@ def pattern_list_2_object_list(input_object: object) -> list[object]:
             Returns:
                 A list of objects.
     """
-    env = _python_functions.UserSettings()
+    _env = _python_functions.UserSettings()
 
-    obj_list = []
+    _obj_list = []
 
     for i in input_object.input_file:
 
         for k in (glob.glob(i)):
 
-            job_item = copy.deepcopy(input_object)
+            _job_item = copy.deepcopy(input_object)
 
-            if env.absolute_path is True:
+            if _env.absolute_path is True:
 
-                job_item.input_file = os.path.abspath(k)
+                _job_item.input_file = os.path.abspath(k)
 
             else:
 
-                job_item.input_file = k
+                _job_item.input_file = k
 
-            obj_list.append(job_item)
+            _obj_list.append(_job_item)
 
-    return obj_list
+    return _obj_list
 
 
-def pattern_2_object_list(input_object: object) -> list[object]:
+def _pattern_2_object_list(input_object: object) -> list[object]:
     """generate an object list from a single pattern.
 
         this function will break it down the parameter object's 'input_file' attribute, into several objects,
@@ -70,28 +70,28 @@ def pattern_2_object_list(input_object: object) -> list[object]:
                     A list of objects.
     """
 
-    env = _python_functions.UserSettings()
+    _env = _python_functions.UserSettings()
 
-    obj_list = []
+    _obj_list = []
 
     for i in (glob.glob(input_object.input_file)):
 
-        job_item = copy.deepcopy(input_object)
+        _job_item = copy.deepcopy(input_object)
 
-        if env.absolute_path is True:
+        if _env.absolute_path is True:
 
-            job_item.input_file = os.path.abspath(i)
+            _job_item.input_file = os.path.abspath(i)
 
         else:
 
-            job_item.input_file = i
+            _job_item.input_file = i
 
-        obj_list.append(job_item)
+        _obj_list.append(_job_item)
 
-    return obj_list
+    return _obj_list
 
 
-def exact_file_2_object_list(input_object: object) -> list[object]:
+def _exact_file_2_object_list(input_object: object) -> list[object]:
     """Put an object into a list.
 
           Object with exact filename in its 'object.input_file' attribute, will be put in a list for further processing.
@@ -103,9 +103,9 @@ def exact_file_2_object_list(input_object: object) -> list[object]:
           Returns:
             A object within a list
     """
-    obj_list = [input_object]
+    _obj_list = [input_object]
 
-    return obj_list
+    return _obj_list
 
 
 def make_object_list(input_object: object) -> list[object]:
@@ -129,14 +129,14 @@ def make_object_list(input_object: object) -> list[object]:
 
     if type(input_object.input_file) is list:
 
-        obj_list = pattern_list_2_object_list(input_object)
+        obj_list = _pattern_list_2_object_list(input_object)
 
     elif re.match(r"\*", input_object.input_file):
 
-        obj_list = pattern_2_object_list(input_object)
+        obj_list = _pattern_2_object_list(input_object)
 
     else:
 
-        obj_list = exact_file_2_object_list(input_object)
+        obj_list = _exact_file_2_object_list(input_object)
 
     return obj_list
