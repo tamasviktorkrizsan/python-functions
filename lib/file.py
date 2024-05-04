@@ -90,16 +90,16 @@ def make_folder_name(output_folder_name: str):
     return raw_folder_path
 
 
-def make_filename(input_filename: str, suffix: str = '', input_folder_name: str = None):
+def make_filename(input_filename: str, suffix: str | None = None, input_folder_name: str | None = None) -> str:
     """Create an output filename for output shell commands.
 
         Args:
 
-            input_filename(str): filename string.
+            input_filename(str | None): filename string.
 
-            suffix(str): added ending to the filename with the file extension included.
+            suffix(str | None): added ending to the filename with the file extension included.
 
-            input_folder_name(str): optional. It will concat the filename with a folder or absolute path.
+            input_folder_name(str | None): optional. It will concat the filename with a folder or absolute path.
 
         Returns:
             filename or full path in a raw string (for windows style paths).
@@ -107,7 +107,13 @@ def make_filename(input_filename: str, suffix: str = '', input_folder_name: str 
 
     filename = pathlib.Path(input_filename)
 
-    output_filename = filter_filename(filename.stem) + suffix
+    if suffix is None:
+
+        output_filename = filter_filename(filename.stem)
+
+    else:
+
+        output_filename = filter_filename(filename.stem) + suffix
 
     if input_folder_name is None:
 
