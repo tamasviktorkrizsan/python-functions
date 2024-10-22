@@ -133,3 +133,21 @@ def return_value(command):
     output = subprocess.check_output(command, shell=True)
 
     return output
+
+
+def return_code(command):
+    """Execute a shell command and return its return code.
+
+            Args:
+
+                    command(list[str]):
+
+                        A list containing a valid shell command, broken down to tokens.
+                        Example: '[program, -programSwitch1, -programSwitch2, outputFile]'
+
+                    Returns:
+                        int.
+    """
+    result = subprocess.run(command).returncode
+
+    return result
